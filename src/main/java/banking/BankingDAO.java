@@ -62,6 +62,9 @@ public class BankingDAO {
 				statement.setFloat( 1, amount);
 				statement.setInt(2, toID);
 				numberUpdated = statement.executeUpdate();
+                                if(numberUpdated == 0){
+                                    throw new Exception("le customer n'existe pas");
+                                }
 
 				// Tout s'est bien passé, on peut valider la transaction
 				myConnection.commit();
